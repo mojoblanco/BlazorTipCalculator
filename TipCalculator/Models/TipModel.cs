@@ -13,7 +13,7 @@ namespace TipCalculator.Models
         public double Amount { get; set; }
 
         [Required]
-        public int Percentage { get; set; }
+        public string Percentage { get; set; }
 
         [Required]
         [Range(1, 100, ErrorMessage = "Invalid number of people")]

@@ -21,6 +21,7 @@
             <div class="form-group">
                 <label>Tip %:</label>
                 <InputSelect id="percentage" @bind-Value="model.Percentage" class="form-control">
+                    <option value="">--Select option--</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -35,14 +36,30 @@
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </EditForm>
     </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col">Total Tip</div>
+            <div class="col text-right">@tip.ToString("N")</div>
+        </div>
+        <div class="row">
+            <div class="col">Tip per Person</div>
+            <div class="col text-right">@tipPerPerson.ToString("N")</div>
+        </div>
+    </div>
 </div>
 
 
 @code {
     private TipModel model = new TipModel();
+    private double tip;
+    private double tipPerPerson;
 
     private void HandleValidSubmit()
     {
-        Console.WriteLine("OnValidSubmit");
+        tip = (int.Parse(model.Percentage) / 100d) * model.Amount;
+        tipPerPerson = tip / model.PeopleCount;
+
+        Console.WriteLine(tip);
     }
 }
