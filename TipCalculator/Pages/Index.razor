@@ -10,6 +10,9 @@
     <div class="card-body">
         <EditForm Model="@model" OnValidSubmit="HandleValidSubmit">
 
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
             <div class="form-group">
                 <label for="amount">Amount</label>
                 <InputNumber id="amount" @bind-Value="model.Amount" class="form-control" />
@@ -18,7 +21,6 @@
             <div class="form-group">
                 <label>Tip %:</label>
                 <InputSelect id="percentage" @bind-Value="model.Percentage" class="form-control">
-                    <option value="">--Select an option--</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
@@ -27,7 +29,7 @@
 
             <div class="form-group">
                 <label for="peopleCount">Number of People</label>
-                <InputNumber id="peopleCount" @bind-Value="model.PeopleCount" class="form-control"/>
+                <InputNumber id="peopleCount" @bind-Value="model.PeopleCount" class="form-control" />
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
